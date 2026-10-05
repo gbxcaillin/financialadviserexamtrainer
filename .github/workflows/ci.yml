@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  shared-web:
+    name: Shared web app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Native copies match shared/index.html
+        run: scripts/sync-web.sh --check
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+
+  android:
+    name: Android build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build debug + release and lint
+        working-directory: android
+        run: ./gradlew assembleDebug assembleRelease lintDebug
+
+  ios:
+    name: iOS build
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build for simulator (no signing)
+        working-directory: ios
+        run: |
+          xcodebuild -project "Financial Adviser Exam Trainer.xcodeproj" \
+            -scheme "Financial Adviser Exam Trainer" \
+            -destination "generic/platform=iOS Simulator" \
+            CODE_SIGNING_ALLOWED=NO build

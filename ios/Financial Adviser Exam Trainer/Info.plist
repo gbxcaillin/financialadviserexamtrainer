@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Merged with the keys Xcode generates (GENERATE_INFOPLIST_FILE = YES). -->
+
+	<!-- AdMob: these are Google's public TEST IDs. Replace all three with the
+	     live IDs from the AdMob console before submitting to the App Store. -->
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<key>FASEARewardedAdUnitID</key>
+	<string>ca-app-pub-3940256099942544/1712485313</string>
+	<key>FASEAInterstitialAdUnitID</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+
+	<!-- Google's ad network ID for SKAdNetwork attribution. -->
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
+
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+</dict>
+</plist>
