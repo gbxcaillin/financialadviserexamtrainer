@@ -1,0 +1,13 @@
+{
+  "name": "financial-adviser-exam-trainer",
+  "private": true,
+  "description": "Checks for the shared web app bundled into the Android and iOS apps",
+  "scripts": {
+    "test": "node tests/bridge.test.js",
+    "sync": "scripts/sync-web.sh",
+    "check-sync": "scripts/sync-web.sh --check"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
